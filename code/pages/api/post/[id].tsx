@@ -1,3 +1,4 @@
+import { PrismaClientValidationError } from '@prisma/client/runtime'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { getSession } from 'next-auth/client'
 import prisma from '../../../lib/prisma'
@@ -15,29 +16,39 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   if (req.method === 'POST') {
-    const { title, content } = JSON.parse(req.body) as Body
-    console.log(req.body)
-    const { id } = await prisma.post.create({
-      data: {
-        title,
-        content,
-        author: {
-          connect: { email: session.user!.email as string }
+    try {
+      const { title, content } = JSON.parse(req.body) as Body
+      if (!title || !content)
+        throw new Error("Missing fields")
+      const { id } = await prisma.post.create({
+        data: {
+          title,
+          content,
+          author: {
+            connect: { email: session.user!.email as string }
+          }
         }
-      }
-    })
-    return res.status(201).json({ id })
+      })
+      return res.status(201).json({ id })
+    } catch (error: any) {
+      return res.status(400).send(error.message)
+    }
   }
 
   if (req.method === 'PUT') {
-    const { title, content } = JSON.parse(req.body) as Body
-    const id = parseInt(req.query.id as string)
-
-    await prisma.post.update({
-      where: { id },
-      data: { title, content }
-    })
-    return res.status(200).send('Post updated')
+    try {
+      const { title, content } = JSON.parse(req.body) as Body
+      if (!title && !content)
+        throw new Error("Missing fields")
+      const id = parseInt(req.query.id as string)
+      await prisma.post.update({
+        where: { id },
+        data: { title, content }
+      })
+      return res.status(200).send('Post updated')
+    } catch (error: any) {
+      return res.status(400).send(error.message)
+    }
   }
 
   if (req.method === 'DELETE') {

@@ -31,7 +31,7 @@ export default function Home({ posts }: { posts: PopulatedPost[] }) {
       {
         !posts.length &&
         <NextLink href="/posts/create" passHref>
-          <Link fontSize="4xl">Create a Post to get started</Link>
+          <Link fontSize="4xl" id="get-started-link">Create a Post to get started</Link>
         </NextLink>
       }
     </SimpleGrid>

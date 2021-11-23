@@ -41,7 +41,6 @@ export default function Post({ post }: { post: PopulatedPost | null }) {
   }
 
   const handleEditable = (v?: () => string) => {
-    console.log(v)
     if (typeof v === "function") {
       setPostData(d => ({ ...d, "content": v() }))
     }
@@ -59,10 +58,13 @@ export default function Post({ post }: { post: PopulatedPost | null }) {
     e.preventDefault()
     try {
       if (!post) {
-        const { id } = await (await fetch('/api/post/create', {
+        const res = await fetch('/api/post/create', {
           method: 'POST',
-          body: JSON.stringify(postData)
-        })).json()
+          body: JSON.stringify(postData),
+        })
+        if (!res.ok)
+          throw new Error(await res.text())
+        const { id } = await res.json()
         toast({
           title: 'Post created',
           status: 'success'
@@ -70,10 +72,12 @@ export default function Post({ post }: { post: PopulatedPost | null }) {
         router.push(`/posts/${id}`)
       }
       else {
-        await fetch(`/api/post/${post.id}`, {
+        const res = await fetch(`/api/post/${post.id}`, {
           method: 'PUT',
           body: JSON.stringify(postData)
         })
+        if (!res.ok)
+          throw new Error(await res.text())
         toast({
           title: 'Post updated',
           status: 'info'
@@ -87,22 +91,24 @@ export default function Post({ post }: { post: PopulatedPost | null }) {
     }
   }
 
-  const handleDelete = () => {
-    fetch(`/api/post/${post!.id}`, {
-      method: 'DELETE'
-    })
-      .then(res => res.json())
-      .then(() => {
-        toast({
-          title: 'Post deleted',
-          status: 'info'
-        })
-        router.push('/')
+  const handleDelete = async () => {
+    try {
+      const res = await fetch(`/api/post/${post!.id}`, {
+        method: 'DELETE'
       })
-      .catch(err => toast({
-        title: err.message,
+      if (!res.ok)
+        throw new Error(await res.text())
+      toast({
+        title: 'Post deleted',
+        status: 'info'
+      })
+      router.push('/')
+    } catch (error: any) {
+      toast({
+        title: error.message,
         status: 'error'
-      }))
+      })
+    }
   }
 
   return (
@@ -122,7 +128,7 @@ export default function Post({ post }: { post: PopulatedPost | null }) {
           </Editable>
           <HStack spacing={3}>
             {(router.query.id === 'create' || session?.user?.email === post?.author.email) && <Button type="submit">Submit</Button>}
-            {session?.user?.email === post?.author.email && <Button colorScheme="red" onClick={handleDelete}>Delete</Button>}
+            {session?.user?.email === post?.author.email && <Button id='delete-btn' colorScheme="red" onClick={handleDelete}>Delete</Button>}
           </HStack>
         </HStack>
         <Editor

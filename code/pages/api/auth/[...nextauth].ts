@@ -15,7 +15,6 @@ export default nextAuth({
       async authorize(credentials) {
         try {
           const password = await hash(credentials.password, 10)
-          console.log(credentials)
           if (credentials.new === '') {
             const user = await prisma.user.create({
               data: {

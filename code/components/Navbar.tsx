@@ -50,7 +50,7 @@ export default function Navbar() {
                   </MenuList>
                 </Menu>
                 :
-                <Button onClick={() => signIn()}>Get started</Button>
+                <Button id="get-started-btn" onClick={() => signIn()}>Get started</Button>
             }
 
           </Stack>

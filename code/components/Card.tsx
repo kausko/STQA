@@ -22,6 +22,7 @@ export default function Card({ post }: { post: PopulatedPost }) {
     <Box
       // maxW={'445px'}
       // w={'full'}
+      id={`${post.author.email}-${post.id}`}
       bg={useColorModeValue('white', 'gray.900')}
       boxShadow={'2xl'}
       rounded={'md'}
