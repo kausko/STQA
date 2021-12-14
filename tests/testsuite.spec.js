@@ -71,7 +71,7 @@ describe('test_suite', function() {
     vars["postContent"] = await driver.executeScript("return new Date().toString()")
     {
       const element = await driver.findElement(By.css(".ProseMirror"))
-      await driver.executeScript("if(arguments[0].contentEditable === 'true') {arguments[0].innerText = 'vars["postContent"]'}", element)
+      await driver.executeScript(`if(arguments[0].contentEditable === 'true') {arguments[0].innerText = 'vars["postContent"]'}`, element)
     }
     await driver.findElement(By.css(".css-taj3dd")).click()
   })
