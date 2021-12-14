@@ -22,6 +22,8 @@ export default function Navbar() {
               session?.user?.email ?
                 <Menu>
                   <MenuButton
+                    id="menu-button-4"
+                    itemID="menu-button-4"
                     as={Button}
                     rounded={'full'}
                     variant={'link'}
@@ -46,7 +48,7 @@ export default function Navbar() {
                         <Link>Create Post</Link>
                       </NextLink>
                     </MenuItem>
-                    <MenuItem onClick={() => signOut({ redirect: false })}>Logout</MenuItem>
+                    <MenuItem itemID="logout-btn" onClick={() => signOut({ redirect: false })}>Logout</MenuItem>
                   </MenuList>
                 </Menu>
                 :

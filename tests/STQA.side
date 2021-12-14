@@ -10,7 +10,7 @@
       "id": "e5c3c2f6-3511-4ad7-897b-f29c4bfedab5",
       "comment": "",
       "command": "open",
-      "target": "/",
+      "target": "http://localhost:3000/",
       "targets": [],
       "value": ""
     }, {
@@ -98,6 +98,20 @@
         ["xpath=//button[contains(.,'Sign in with Credentials')]", "xpath:innerText"]
       ],
       "value": ""
+    }, {
+      "id": "7e2e1ea1-5d93-445d-bcfd-25a11f753a2f",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "linkText=SimpleBlog",
+      "targets": [
+        ["linkText=SimpleBlog", "linkText"],
+        ["css=.css-mw1b8c", "css:finder"],
+        ["xpath=//a[contains(text(),'SimpleBlog')]", "xpath:link"],
+        ["xpath=//div[@id='__next']/div/div/div/a", "xpath:idRelative"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'SimpleBlog')]", "xpath:innerText"]
+      ],
+      "value": "30000"
     }]
   }, {
     "id": "9f2d7a55-1f82-44aa-a651-cef5fdfcaa7d",
@@ -181,6 +195,20 @@
         ["xpath=//button[contains(.,'Sign in with Credentials')]", "xpath:innerText"]
       ],
       "value": ""
+    }, {
+      "id": "ebd20c1b-be2f-4a1b-8b4c-186e3715494a",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "linkText=SimpleBlog",
+      "targets": [
+        ["linkText=SimpleBlog", "linkText"],
+        ["css=.css-mw1b8c", "css:finder"],
+        ["xpath=//a[contains(text(),'SimpleBlog')]", "xpath:link"],
+        ["xpath=//div[@id='__next']/div/div/div/a", "xpath:idRelative"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'SimpleBlog')]", "xpath:innerText"]
+      ],
+      "value": "30000"
     }]
   }, {
     "id": "d2702deb-a623-4282-8c46-3f19a719c78d",
@@ -189,14 +217,14 @@
       "id": "9749abfd-d617-4970-a06e-688f8f445e3b",
       "comment": "",
       "command": "open",
-      "target": "/",
+      "target": "http://localhost:3000/",
       "targets": [],
       "value": ""
     }, {
       "id": "83fc6839-6a32-4c3a-bf61-0368123d9957",
       "comment": "",
       "command": "click",
-      "target": "id=menu-button-4",
+      "target": "css=button[itemid='menu-button-4']",
       "targets": [
         ["id=menu-button-4", "id"],
         ["css=#menu-button-4", "css:finder"],
@@ -209,11 +237,11 @@
       "id": "a12af689-e74b-48ed-910a-a6767f0c2279",
       "comment": "",
       "command": "click",
-      "target": "id=menu-list-4-menuitem-8",
+      "target": "css=button[itemid='logout-btn']",
       "targets": [
-        ["id=menu-list-4-menuitem-8", "id"],
-        ["css=#menu-list-4-menuitem-8", "css:finder"],
-        ["xpath=//button[@id='menu-list-4-menuitem-8']", "xpath:attributes"],
+        ["id=logout-btn", "id"],
+        ["css=#logout-btn", "css:finder"],
+        ["xpath=//button[@id='logout-btn']", "xpath:attributes"],
         ["xpath=//div[@id='menu-list-4']/button[2]", "xpath:idRelative"],
         ["xpath=//div/div/div/div/div/div/div/button[2]", "xpath:position"],
         ["xpath=//button[contains(.,'Logout')]", "xpath:innerText"]
@@ -241,11 +269,11 @@
       "id": "93a3557e-d109-4059-a664-a76d8d0837da",
       "comment": "",
       "command": "click",
-      "target": "id=menu-button-4",
+      "target": "css=button[itemid='menu-button-4']",
       "targets": [
-        ["id=menu-button-4", "id"],
-        ["css=#menu-button-4", "css:finder"],
-        ["xpath=//button[@id='menu-button-4']", "xpath:attributes"],
+        ["id=menu-button-2", "id"],
+        ["css=#menu-button-2", "css:finder"],
+        ["xpath=//button[@id='menu-button-2']", "xpath:attributes"],
         ["xpath=//div[@id='__next']/div/div/div/div/div/button[2]", "xpath:idRelative"],
         ["xpath=//button[2]", "xpath:position"]
       ],
@@ -412,7 +440,7 @@
       "id": "c2828f7c-62e3-4372-971e-57290196974d",
       "comment": "",
       "command": "click",
-      "target": "css=.css-taj3dd",
+      "target": "xpath=//button[@type='submit']",
       "targets": [
         ["css=.css-taj3dd", "css:finder"],
         ["xpath=//button[@type='submit']", "xpath:attributes"],
@@ -622,7 +650,7 @@
       "id": "9871e00c-6cdb-4cd4-95e6-527439326c8d",
       "comment": "",
       "command": "open",
-      "target": "/",
+      "target": "http://localhost:3000/",
       "targets": [],
       "value": ""
     }, {
@@ -743,7 +771,7 @@
       "id": "18a3f3f9-6b46-44c7-a73c-8129037a2c19",
       "comment": "",
       "command": "click",
-      "target": "id=menu-button-4",
+      "target": "css=button[itemid='menu-button-4']",
       "targets": [
         ["id=menu-button-4", "id"],
         ["css=#menu-button-4", "css:finder"],
@@ -793,14 +821,52 @@
       ],
       "value": ""
     }]
+  }, {
+    "id": "ee08600b-0669-4e62-9f49-be0fd2b4b2f1",
+    "name": "logout_final",
+    "commands": [{
+      "id": "ddafb4d7-2010-430f-94db-a3ea43cacc1d",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d072c7b1-0358-4937-8d94-8361b850dc00",
+      "comment": "",
+      "command": "click",
+      "target": "css=button[itemid='menu-button-4']",
+      "targets": [
+        ["id=menu-button-4", "id"],
+        ["css=#menu-button-4", "css:finder"],
+        ["xpath=//button[@id='menu-button-4']", "xpath:attributes"],
+        ["xpath=//div[@id='__next']/div/div/div/div/div/button[2]", "xpath:idRelative"],
+        ["xpath=//button[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7197392d-793c-47fa-ba80-0bc05e6e2268",
+      "comment": "",
+      "command": "click",
+      "target": "css=button[itemid='logout-btn']",
+      "targets": [
+        ["id=logout-btn", "id"],
+        ["css=#logout-btn", "css:finder"],
+        ["xpath=//button[@id='logout-btn']", "xpath:attributes"],
+        ["xpath=//div[@id='menu-list-4']/button[2]", "xpath:idRelative"],
+        ["xpath=//div/div/div/div/div/div/div/button[2]", "xpath:position"],
+        ["xpath=//button[contains(.,'Logout')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
   }],
   "suites": [{
     "id": "f6d95833-c682-4346-8407-1d961efaf8e7",
     "name": "test_suite",
-    "persistSession": false,
+    "persistSession": true,
     "parallel": false,
     "timeout": 300,
-    "tests": ["3af6ae52-fe01-496e-a438-47f543ca5cd6", "9d3c3a69-9bb4-4026-8ff0-7af06bbca2e5", "5efd0c33-90e2-44af-888c-7bca578408e3", "9cd90261-0d80-44a6-a26e-5c81559cfd1a", "ece8e3e0-c8bc-4855-a0fc-61834acf7641", "d2702deb-a623-4282-8c46-3f19a719c78d", "1c06f19d-712c-4b57-9e47-fada310715a3", "8301c09c-dd3e-4be6-8434-99394c1b9b4e", "9f2d7a55-1f82-44aa-a651-cef5fdfcaa7d", "640dc318-76be-413f-8489-ff8fb7da3ac5"]
+    "tests": ["3af6ae52-fe01-496e-a438-47f543ca5cd6", "9d3c3a69-9bb4-4026-8ff0-7af06bbca2e5", "5efd0c33-90e2-44af-888c-7bca578408e3", "ece8e3e0-c8bc-4855-a0fc-61834acf7641", "9cd90261-0d80-44a6-a26e-5c81559cfd1a", "d2702deb-a623-4282-8c46-3f19a719c78d", "640dc318-76be-413f-8489-ff8fb7da3ac5", "1c06f19d-712c-4b57-9e47-fada310715a3", "8301c09c-dd3e-4be6-8434-99394c1b9b4e", "9f2d7a55-1f82-44aa-a651-cef5fdfcaa7d", "ee08600b-0669-4e62-9f49-be0fd2b4b2f1"]
   }],
   "urls": ["http://localhost:3000/"],
   "plugins": []

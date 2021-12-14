@@ -7,7 +7,11 @@
     "generate": "npx prisma generate",
     "push": "npx prisma db push",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test-db-generate": "npx prisma generate --schema=./test/schema.prisma",
+    "test-db-push": "npx prisma db push --force-reset --schema=./test/schema.prisma",
+    "test-dev": "yarn test-db-push && yarn dev",
+    "test-start": "yarn test-db-push && yarn start"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.1.1",
